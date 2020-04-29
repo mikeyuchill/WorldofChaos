@@ -1,7 +1,11 @@
-﻿#include <iostream>
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+#include <iostream>
 #include <ctime>
 #include <string>
-#include <windows.h>
 using namespace std;
 
 
@@ -77,7 +81,7 @@ int main()
 	printCharacter(&Pigsy);
 	printCharacter(&Sandy);
 	printCharacter(&Tripitaker);
-	Sleep(1000);
+	sleep(1000);
 	cout << "\nPlease choose your character: " << endl;
 	cout << "1.Monkey King\t" << "2.Pigsy\t" << "3.Sandy\t" << "4.Tripitaker" << endl;
 	cin >> characterChoice;
@@ -94,9 +98,9 @@ int main()
 		if (characterChoice == 1 || characterChoice == 2 || characterChoice == 3 || characterChoice == 4) break;
 	}
 	cout << "\nWelcome to the World of Chaos, " << player.name << " !" << endl;
-	Sleep(2000);
+	sleep(2000);
 	cout << "You are now in a small town surrounded by a river and a forest. \nThere are a weapon shop and a drug store." << endl;
-	Sleep(1500);
+	sleep(1500);
 	cout << "What are you going to do? " << endl;
 	cout << "1.Go to the weapon shop" << endl;
 	cout << "2.Go to the drug store" << endl;
@@ -305,7 +309,7 @@ void weaponShop(struct characters &player)
 		default: cout << "Do you want to buy something or leave?" << endl;
 			break;
 		}
-		Sleep(1500);
+		sleep(1500);
 		cout << "\nWhat do you want to do next? " << endl;
 		if (player.name == "Monkey King")
 		{
@@ -352,7 +356,7 @@ void weaponShop(struct characters &player)
 	}
 
 	cout << "Leaving the weapon shop..." << endl;
-	Sleep(1000);
+	sleep(1000);
 }
 
 
@@ -420,7 +424,7 @@ void treasure(struct characters &player)
 		if (1 == rand() % 10)
 		{
 			cout << "wow! You find a old book. Let's get closer and read it..." << endl;
-			Sleep(3000);
+			sleep(3000);
 			cout << "You need to get the \"ultimate weapon\" to beat the boss... Good luck my man!" << endl;
 		}else if (1 == rand() % 20)
 		{
@@ -486,7 +490,7 @@ void monster(struct characters &player)
 				cout << "You killed this monster！You are amazing！！！" << endl;
 				player.money += *monsterMoney;
 				levelUp(player);
-				Sleep(1000);
+				sleep(1000);
 				return;
 			}
 			cout << "You caused " << *monsterStats << " damage to the monster." << endl;
@@ -505,9 +509,9 @@ void monster(struct characters &player)
 		}else {
 			cout << "You decide to run away!" << endl;
 			cout << "." << endl;
-			Sleep(1500);
+			sleep(1500);
 			cout << "." << endl;
-			Sleep(1500);
+			sleep(1500);
 			cout << "." << endl;
 			if (1 == rand() % 50)
 			{
@@ -604,9 +608,9 @@ void boss(struct characters &player)
 					else {
 						cout << "You decide to run away!" << endl;
 						cout << "." << endl;
-						Sleep(1000);
+						sleep(1000);
 						cout << "." << endl;
-						Sleep(1000);
+						sleep(1000);
 						cout << "." << endl;
 						if (1 == rand() % 50)
 						{
@@ -639,6 +643,6 @@ void boss(struct characters &player)
 		}
 	}
 	cout << "Leaving the cave..." << endl;
-	Sleep(1000);
+	sleep(1000);
 	
 }
